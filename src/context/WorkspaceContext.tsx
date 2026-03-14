@@ -76,10 +76,10 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useWorkspace() {
+export function useWorkspace(optional = false) {
   const context = useContext(WorkspaceContext);
-  if (context === undefined) {
+  if (context === undefined && !optional) {
     throw new Error('useWorkspace must be used within a WorkspaceProvider');
   }
-  return context;
+  return context as WorkspaceContextType;
 }

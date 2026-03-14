@@ -12,7 +12,7 @@ interface NoteRendererProps {
 
 export default function NoteRenderer({ content }: NoteRendererProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { addPanel } = useWorkspace();
+  const workspace = useWorkspace(true);
 
   // Parse links first
   const { parsedText } = parseBidirectionalLinks(content || '');
@@ -34,7 +34,9 @@ export default function NoteRenderer({ content }: NoteRendererProps) {
         // In this implementation, the linkName is the title of the note.
         // We open a new editor panel. Later we'll make the editor fetch the note by title if noteId isn't given.
         // For now, we simulate opening it by passing the linkName in a special format or relying on search.
-        addPanel('editor', `title:${linkName}`);
+        if (workspace?.addPanel) {
+          workspace.addPanel('editor', `title:${linkName}`);
+        }
       }
     };
 
@@ -47,7 +49,7 @@ export default function NoteRenderer({ content }: NoteRendererProps) {
         container.removeEventListener('click', handleLinkClick);
       }
     };
-  }, [addPanel]);
+  }, [workspace]);
 
   return (
     <div 
