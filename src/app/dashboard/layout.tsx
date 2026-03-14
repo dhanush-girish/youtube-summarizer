@@ -3,7 +3,7 @@
 import React from 'react';
 import { WorkspaceProvider, useWorkspace } from '@/context/WorkspaceContext';
 import WorkspaceLayout from '@/components/WorkspaceLayout';
-import { FileText, Activity, Share2, ScanText, LogOut, Youtube } from 'lucide-react';
+import { FileText, Activity, Share2, ScanText, LogOut, Youtube, BookOpen } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 
@@ -31,6 +31,9 @@ function Sidebar() {
       zIndex: 10
     }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', flex: 1 }}>
+        <button className="sidebar-btn" onClick={() => addPanel('notes')} title="Saved Notes">
+          <BookOpen size={22} />
+        </button>
         <button className="sidebar-btn" onClick={() => addPanel('editor')} title="New Note">
           <FileText size={22} />
         </button>

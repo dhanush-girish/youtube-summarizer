@@ -8,6 +8,7 @@ import TimelineView from './TimelineView';
 import KnowledgeGraph from './KnowledgeGraph';
 import OCRScanner from './OCRScanner';
 import YouTubeImporter from './YouTubeImporter';
+import SavedNotes from './SavedNotes';
 
 const PanelContent = ({ panel }: { panel: ViewPanel }) => {
   switch (panel.type) {
@@ -21,6 +22,8 @@ const PanelContent = ({ panel }: { panel: ViewPanel }) => {
       return <OCRScanner />;
     case 'youtube':
       return <YouTubeImporter />;
+    case 'notes':
+      return <SavedNotes />;
     default:
       return <div>Unknown Panel</div>;
   }

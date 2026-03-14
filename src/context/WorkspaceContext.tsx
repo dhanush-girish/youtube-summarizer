@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define the shape of a view panel
-export type ViewType = 'editor' | 'timeline' | 'graph' | 'ocr' | 'youtube';
+export type ViewType = 'editor' | 'timeline' | 'graph' | 'ocr' | 'youtube' | 'notes';
 
 export interface ViewPanel {
   id: string; // Unique ID for the panel
